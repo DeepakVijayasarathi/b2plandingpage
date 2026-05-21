@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2P Teachers — Shaping Tomorrow's Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   TOKENS
+═══════════════════════════════════ */
+:root {
+  --ink:     #04080F;
+  --ink2:    #0A1120;
+  --ink3:    #0F1929;
+  --azure:   #1B6BF5;
+  --azure2:  #0D52D0;
+  --aqua:    #00D4FF;
+  --gold:    #F5C130;
+  --ember:   #F07A1A;
+  --white:   #FFFFFF;
+  --mist:    rgba(255,255,255,0.06);
+  --line:    rgba(255,255,255,0.08);
+  --gray:    #8899B4;
+  --green:   #1ED760;
+  --r:       20px;
+  --r-sm:    12px;
+}
+
+/* ═══════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  font-family:'Bricolage Grotesque',sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+  cursor:default;
+}
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
+
+/* ═══════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════ */
+.cursor-dot, .cursor-ring {
+  position:fixed; pointer-events:none; z-index:9999;
+  border-radius:50%; transform:translate(-50%,-50%);
+  transition:opacity .3s;
+}
+.cursor-dot {
+  width:6px; height:6px;
+  background:var(--aqua);
+  top:0; left:0;
+}
+.cursor-ring {
+  width:36px; height:36px;
+  border:1.5px solid rgba(0,212,255,0.4);
+  top:0; left:0;
+  transition:width .2s,height .2s,border-color .2s;
+}
+.cursor-ring.hovered {
+  width:56px; height:56px;
+  border-color:var(--aqua);
+}
+
+/* ═══════════════════════════════════
+   NOISE OVERLAY
+═══════════════════════════════════ */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.025;
+}
+
+/* ═══════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════ */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--ink); }
+::-webkit-scrollbar-thumb { background:var(--azure); border-radius:2px; }
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  padding:0 40px;
+  height:68px;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(4,8,15,0.7);
+  backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--line);
+  transition:background .3s;
+}
+.nav-logo {
+  display:flex; align-items:center; gap:12px;
+}
+.nav-logo-mark {
+  width:38px; height:38px;
+  background:linear-gradient(135deg,var(--azure),var(--aqua));
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'DM Mono',monospace; font-weight:500;
+  font-size:13px; color:var(--ink); letter-spacing:-0.5px;
+  box-shadow:0 0 20px rgba(27,107,245,0.4);
+}
+.nav-brand {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:16px; color:var(--white);
+  letter-spacing:-0.3px;
+}
+.nav-brand span { color:var(--aqua); }
+.nav-links {
+  display:flex; align-items:center; gap:32px;
+}
+.nav-link {
+  font-size:13px; font-weight:500; color:var(--gray);
+  transition:color .2s; letter-spacing:0.2px;
+  position:relative;
+}
+.nav-link::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0;
+  height:1px; background:var(--aqua);
+  transform:scaleX(0); transition:transform .2s;
+}
+.nav-link:hover { color:var(--white); }
+.nav-link:hover::after { transform:scaleX(1); }
+.nav-actions { display:flex; align-items:center; gap:12px; }
+.nav-btn-ghost {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:13px; font-weight:600; color:var(--white);
+  padding:8px 18px; border-radius:8px;
+  border:1px solid var(--line);
+  background:transparent; cursor:pointer;
+  transition:all .2s;
+}
+.nav-btn-ghost:hover { background:var(--mist); border-color:rgba(255,255,255,0.2); }
+.nav-btn-fill {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:13px; font-weight:700; color:var(--ink);
+  padding:9px 22px; border-radius:8px;
+  background:linear-gradient(135deg,var(--aqua),var(--azure));
+  border:none; cursor:pointer;
+  box-shadow:0 0 24px rgba(0,212,255,0.3);
+  transition:all .2s; white-space:nowrap;
+}
+.nav-btn-fill:hover { transform:translateY(-1px); box-shadow:0 0 36px rgba(0,212,255,0.5); }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero {
+  min-height:100vh;
+  padding:120px 40px 80px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+
+/* animated mesh background */
+.hero-mesh {
+  position:absolute; inset:0; z-index:0; overflow:hidden;
+}
+.mesh-orb {
+  position:absolute; border-radius:50%;
+  filter:blur(80px); opacity:0.18;
+  animation:orb-float 8s ease-in-out infinite;
+}
+.orb-1 {
+  width:600px; height:600px;
+  background:radial-gradient(circle,var(--azure),transparent);
+  top:-200px; left:-100px;
+  animation-delay:0s;
+}
+.orb-2 {
+  width:500px; height:500px;
+  background:radial-gradient(circle,var(--aqua),transparent);
+  top:100px; right:-150px;
+  animation-delay:2s; opacity:0.12;
+}
+.orb-3 {
+  width:400px; height:400px;
+  background:radial-gradient(circle,var(--gold),transparent);
+  bottom:-100px; left:40%;
+  animation-delay:4s; opacity:0.08;
+}
+@keyframes orb-float {
+  0%,100% { transform:translate(0,0) scale(1); }
+  33%      { transform:translate(30px,-20px) scale(1.05); }
+  66%      { transform:translate(-20px,25px) scale(0.97); }
+}
+
+/* grid lines */
+.hero-grid {
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(27,107,245,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,107,245,0.06) 1px, transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* floating particles */
+.particles { position:absolute; inset:0; z-index:0; }
+.particle {
+  position:absolute; border-radius:50%;
+  background:var(--aqua); opacity:0;
+  animation:particle-rise linear infinite;
+}
+@keyframes particle-rise {
+  0%   { opacity:0; transform:translateY(0) scale(0); }
+  10%  { opacity:0.6; }
+  90%  { opacity:0.2; }
+  100% { opacity:0; transform:translateY(-80vh) scale(1.5); }
+}
+
+.hero-inner {
+  position:relative; z-index:2;
+  max-width:900px; margin:0 auto; text-align:center;
+}
+
+/* EYEBROW CHIP */
+.hero-chip {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.25);
+  padding:6px 18px; border-radius:30px;
+  font-family:'DM Mono',monospace;
+  font-size:11px; font-weight:500; color:var(--aqua);
+  letter-spacing:1.5px; text-transform:uppercase;
+  margin-bottom:32px;
+  animation:chip-in .6s ease both;
+}
+.chip-blink {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--aqua);
+  animation:blink 1.4s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;}50%{opacity:0;} }
+@keyframes chip-in {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* HEADLINE */
+.hero-h1 {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:clamp(40px,7vw,80px);
+  line-height:1.0;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+  animation:h1-in .7s ease .15s both;
+}
+@keyframes h1-in {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.h1-line { display:block; }
+.h1-gradient {
+  background:linear-gradient(90deg, var(--aqua) 0%, var(--azure) 50%, var(--gold) 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:gradient-shift 4s linear infinite;
+}
+@keyframes gradient-shift {
+  0%   { background-position:0% center; }
+  100% { background-position:200% center; }
+}
+
+/* SUBLINE */
+.hero-sub {
+  font-size:clamp(16px,2.2vw,20px);
+  color:rgba(255,255,255,0.55);
+  max-width:580px; margin:0 auto 44px;
+  line-height:1.75; font-weight:300;
+  animation:h1-in .7s ease .3s both;
+}
+
+/* HERO CTA ROW */
+.hero-cta-row {
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; flex-wrap:wrap; margin-bottom:56px;
+  animation:h1-in .7s ease .45s both;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg,var(--aqua),var(--azure));
+  color:var(--ink); border:none;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:15px;
+  padding:16px 36px; border-radius:12px;
+  cursor:pointer; text-decoration:none;
+  box-shadow:0 0 40px rgba(0,212,255,0.35);
+  transition:all .25s; letter-spacing:0.2px;
+  position:relative; overflow:hidden;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.2),transparent);
+  opacity:0; transition:opacity .2s;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 0 60px rgba(0,212,255,0.55); }
+.btn-primary:hover::before { opacity:1; }
+.btn-secondary {
+  display:inline-flex; align-items:center; gap:10px;
+  background:transparent; color:var(--white);
+  border:1px solid rgba(255,255,255,0.18);
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:600; font-size:15px;
+  padding:15px 32px; border-radius:12px;
+  cursor:pointer; text-decoration:none;
+  transition:all .25s;
+  backdrop-filter:blur(8px);
+}
+.btn-secondary:hover { background:var(--mist); border-color:rgba(255,255,255,0.3); transform:translateY(-2px); }
+
+/* HERO STATS */
+.hero-stats {
+  display:flex; justify-content:center; gap:0;
+  border:1px solid var(--line); border-radius:16px;
+  overflow:hidden; max-width:640px; margin:0 auto;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
+  animation:h1-in .7s ease .6s both;
+}
+.hero-stat {
+  flex:1; padding:20px 16px; text-align:center;
+  border-right:1px solid var(--line); position:relative;
+}
+.hero-stat:last-child { border-right:none; }
+.hero-stat::before {
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:40px; height:2px;
+  background:linear-gradient(90deg,transparent,var(--aqua),transparent);
+}
+.stat-num {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:28px;
+  background:linear-gradient(135deg,var(--white),var(--aqua));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  display:block; margin-bottom:4px;
+}
+.stat-lbl { font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.8px; }
+
+/* ═══════════════════════════════════
+   MARQUEE
+═══════════════════════════════════ */
+.marquee-section {
+  padding:0; overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,0.02);
+}
+.marquee-track {
+  display:flex; gap:0;
+  animation:marquee 25s linear infinite;
+  width:max-content;
+}
+.marquee-track:hover { animation-play-state:paused; }
+.marquee-item {
+  display:flex; align-items:center; gap:16px;
+  padding:16px 40px;
+  border-right:1px solid var(--line);
+  white-space:nowrap;
+  font-family:'DM Mono',monospace;
+  font-size:12px; font-weight:500;
+  color:var(--gray); letter-spacing:1px; text-transform:uppercase;
+}
+.marquee-item .m-dot {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--aqua); flex-shrink:0;
+}
+@keyframes marquee {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+
+/* ═══════════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════════ */
+.section { padding:100px 40px; position:relative; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label {
+  font-family:'DM Mono',monospace;
+  font-size:11px; font-weight:500; color:var(--aqua);
+  text-transform:uppercase; letter-spacing:2px;
+  margin-bottom:12px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-label::before {
+  content:''; width:24px; height:1px; background:var(--aqua);
+}
+.section-h {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:clamp(28px,4vw,48px);
+  line-height:1.12; letter-spacing:-1px;
+  margin-bottom:16px;
+}
+.section-h .hl { color:var(--aqua); }
+.section-h .hl-gold { color:var(--gold); }
+.section-p {
+  font-size:16px; color:var(--gray);
+  max-width:520px; line-height:1.75; margin-bottom:56px;
+}
+
+/* ═══════════════════════════════════
+   PROGRAMS SECTION
+═══════════════════════════════════ */
+.programs-section { background:var(--ink2); }
+.programs-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:20px; overflow:hidden;
+}
+.program-card {
+  background:var(--ink2);
+  padding:36px 32px;
+  position:relative; overflow:hidden;
+  transition:background .3s;
+  cursor:pointer;
+}
+.program-card::before {
+  content:''; position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--azure),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.program-card:hover { background:rgba(27,107,245,0.07); }
+.program-card:hover::before { opacity:1; }
+.program-card.featured {
+  background:linear-gradient(145deg,rgba(27,107,245,0.12),rgba(0,212,255,0.05));
+}
+.program-card.featured::before { opacity:1; background:linear-gradient(90deg,transparent,var(--aqua),transparent); }
+.pc-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'DM Mono',monospace;
+  font-size:10px; font-weight:500;
+  padding:3px 10px; border-radius:6px;
+  margin-bottom:20px; text-transform:uppercase; letter-spacing:1px;
+}
+.tag-blue { background:rgba(27,107,245,0.15); color:#93C5FD; }
+.tag-gold { background:rgba(245,193,48,0.12); color:var(--gold); }
+.tag-green { background:rgba(30,215,96,0.12); color:var(--green); }
+.tag-ember { background:rgba(240,122,26,0.12); color:var(--ember); }
+.pc-icon { font-size:32px; margin-bottom:16px; display:block; }
+.pc-name {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:20px;
+  color:var(--white); margin-bottom:8px; letter-spacing:-0.3px;
+}
+.pc-desc { font-size:14px; color:var(--gray); line-height:1.65; margin-bottom:24px; }
+.pc-price {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:24px; color:var(--aqua);
+  margin-bottom:4px;
+}
+.pc-price-sub { font-size:12px; color:var(--gray); }
+.pc-arrow {
+  position:absolute; bottom:32px; right:32px;
+  width:36px; height:36px; border-radius:50%;
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; color:var(--gray);
+  transition:all .2s;
+}
+.program-card:hover .pc-arrow {
+  background:var(--azure); border-color:var(--azure);
+  color:var(--white); transform:rotate(45deg);
+}
+
+/* ═══════════════════════════════════
+   FEATURES SECTION
+═══════════════════════════════════ */
+.features-section { background:var(--ink); }
+.features-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+@media(max-width:768px){ .features-layout{grid-template-columns:1fr;gap:48px;} }
+.features-visual {
+  position:relative; aspect-ratio:1;
+  max-width:480px;
+}
+/* ANIMATED CIRCLE GRAPHIC */
+.vis-ring {
+  position:absolute; border-radius:50%;
+  border:1px solid; animation:ring-spin linear infinite;
+}
+.ring-1 {
+  inset:0; border-color:rgba(27,107,245,0.2);
+  animation-duration:20s;
+}
+.ring-2 {
+  inset:12%; border-color:rgba(0,212,255,0.15);
+  animation-duration:15s; animation-direction:reverse;
+}
+.ring-3 {
+  inset:24%; border-color:rgba(245,193,48,0.1);
+  animation-duration:10s;
+}
+@keyframes ring-spin { to { transform:rotate(360deg); } }
+.ring-1::after,.ring-2::after,.ring-3::after {
+  content:''; position:absolute;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--aqua); top:-4px; left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 12px var(--aqua);
+}
+.ring-2::after { background:var(--gold); box-shadow:0 0 12px var(--gold); }
+.ring-3::after { background:var(--ember); box-shadow:0 0 12px var(--ember); }
+.vis-center {
+  position:absolute; inset:36%;
+  background:linear-gradient(135deg,var(--azure),var(--aqua));
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px;
+  box-shadow:0 0 60px rgba(0,212,255,0.4);
+}
+.vis-float {
+  position:absolute;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--line);
+  border-radius:12px; padding:10px 14px;
+  backdrop-filter:blur(10px);
+  font-size:12px; font-weight:600;
+  display:flex; align-items:center; gap:8px;
+  white-space:nowrap;
+}
+.vf-dot { width:6px; height:6px; border-radius:50%; }
+.vf1 { top:8%; left:-8%; animation:float-a 4s ease-in-out infinite; }
+.vf2 { bottom:10%; right:-8%; animation:float-a 4s ease-in-out 2s infinite; }
+.vf3 { top:50%; left:-12%; animation:float-a 4s ease-in-out 1s infinite; }
+@keyframes float-a {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-8px); }
+}
+
+.features-list { display:flex; flex-direction:column; gap:8px; }
+.feat-item {
+  display:flex; gap:16px; align-items:flex-start;
+  padding:20px; border-radius:var(--r-sm);
+  border:1px solid transparent;
+  transition:all .25s; cursor:default;
+}
+.feat-item:hover {
+  background:rgba(27,107,245,0.07);
+  border-color:rgba(27,107,245,0.2);
+}
+.feat-icon-wrap {
+  width:44px; height:44px; border-radius:10px;
+  background:rgba(27,107,245,0.12);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+  transition:background .25s;
+}
+.feat-item:hover .feat-icon-wrap { background:rgba(27,107,245,0.25); }
+.feat-title {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:15px; color:var(--white);
+  margin-bottom:4px;
+}
+.feat-desc { font-size:13px; color:var(--gray); line-height:1.6; }
+
+/* ═══════════════════════════════════
+   STATS SECTION
+═══════════════════════════════════ */
+.stats-section {
+  background:var(--ink2);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.big-stats {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:0;
+}
+.big-stat {
+  padding:48px 32px;
+  border-right:1px solid var(--line);
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.big-stat:last-child { border-right:none; }
+.big-stat::before {
+  content:''; position:absolute;
+  width:120px; height:120px; border-radius:50%;
+  background:radial-gradient(circle,rgba(27,107,245,0.15),transparent);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  opacity:0; transition:opacity .3s;
+}
+.big-stat:hover::before { opacity:1; }
+.bs-num {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:52px;
+  background:linear-gradient(135deg,var(--white) 40%,var(--aqua));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  line-height:1; display:block; margin-bottom:8px;
+  transition:transform .2s;
+}
+.big-stat:hover .bs-num { transform:scale(1.05); }
+.bs-lbl { font-size:13px; color:var(--gray); font-weight:500; }
+.bs-sub { font-size:11px; color:rgba(255,255,255,0.3); margin-top:3px; }
+
+/* ═══════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════ */
+.testimonials-section { background:var(--ink); overflow:hidden; }
+.testi-track-wrap { overflow:hidden; margin:0 -40px; padding:0 40px; }
+.testi-track {
+  display:flex; gap:20px;
+  animation:testi-scroll 30s linear infinite;
+  width:max-content;
+}
+.testi-track:hover { animation-play-state:paused; }
+@keyframes testi-scroll {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+.testi-card {
+  width:340px; flex-shrink:0;
+  background:var(--ink2);
+  border:1px solid var(--line);
+  border-radius:16px; padding:28px 24px;
+  position:relative; overflow:hidden;
+  transition:border-color .25s;
+}
+.testi-card:hover { border-color:rgba(0,212,255,0.25); }
+.tc-glow {
+  position:absolute; top:0; right:0;
+  width:100px; height:100px;
+  background:radial-gradient(circle,rgba(0,212,255,0.06),transparent);
+  pointer-events:none;
+}
+.tc-stars { color:var(--gold); font-size:12px; margin-bottom:14px; }
+.tc-text {
+  font-size:14px; color:rgba(255,255,255,0.75);
+  line-height:1.7; margin-bottom:20px;
+}
+.tc-author { display:flex; align-items:center; gap:12px; }
+.tc-ava {
+  width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg,var(--azure),var(--aqua));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:14px; color:var(--ink);
+  flex-shrink:0;
+}
+.tc-name { font-weight:700; font-size:14px; color:var(--white); }
+.tc-role { font-size:12px; color:var(--gray); }
+
+/* ═══════════════════════════════════
+   CTA SECTION
+═══════════════════════════════════ */
+.cta-section {
+  background:var(--ink2);
+  padding:120px 40px;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.cta-section::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(27,107,245,0.12),transparent);
+  pointer-events:none;
+}
+.cta-section::after {
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  pointer-events:none;
+}
+.cta-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+.cta-eyebrow {
+  font-family:'DM Mono',monospace;
+  font-size:11px; font-weight:500; color:var(--aqua);
+  letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:20px;
+}
+.cta-h {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:clamp(32px,5vw,60px);
+  line-height:1.1; letter-spacing:-1.5px;
+  margin-bottom:20px;
+}
+.cta-p {
+  font-size:17px; color:rgba(255,255,255,0.55);
+  line-height:1.75; margin-bottom:44px;
+}
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+.footer {
+  background:var(--ink); padding:64px 40px 32px;
+  border-top:1px solid var(--line);
+}
+.footer-top {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px; margin-bottom:56px;
+}
+@media(max-width:768px){ .footer-top{grid-template-columns:1fr 1fr;} }
+.footer-brand { }
+.footer-logo {
+  display:flex; align-items:center; gap:10px; margin-bottom:16px;
+}
+.footer-desc {
+  font-size:14px; color:var(--gray); line-height:1.7;
+  max-width:280px; margin-bottom:24px;
+}
+.footer-socials { display:flex; gap:10px; }
+.social-btn {
+  width:36px; height:36px; border-radius:8px;
+  border:1px solid var(--line); background:transparent;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; cursor:pointer;
+  transition:all .2s; color:var(--gray);
+}
+.social-btn:hover { background:var(--mist); border-color:rgba(255,255,255,0.2); color:var(--white); }
+.footer-col-title {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700; font-size:13px; color:var(--white);
+  margin-bottom:16px; letter-spacing:0.3px;
+}
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-links a {
+  font-size:13px; color:var(--gray);
+  transition:color .2s;
+}
+.footer-links a:hover { color:var(--white); }
+.footer-bottom {
+  border-top:1px solid var(--line);
+  padding-top:24px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:12px;
+}
+.footer-copy { font-size:12px; color:rgba(255,255,255,0.25); }
+.footer-phone { font-family:'DM Mono',monospace; font-size:12px; color:var(--gray); }
+
+/* ═══════════════════════════════════
+   WA FLOAT
+═══════════════════════════════════ */
+.wa-float {
+  position:fixed; bottom:24px; right:24px; z-index:400;
+  width:54px; height:54px; background:#25D366; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; text-decoration:none;
+  box-shadow:0 6px 24px rgba(37,211,102,0.5);
+  transition:transform .2s;
+}
+.wa-float:hover { transform:scale(1.12); }
+
+/* ═══════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════ */
+.reveal {
+  opacity:0; transform:translateY(36px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:.1s; }
+.reveal-delay-2 { transition-delay:.2s; }
+.reveal-delay-3 { transition-delay:.3s; }
+.reveal-delay-4 { transition-delay:.4s; }
+
+/* ═══════════════════════════════════
+   MOBILE
+═══════════════════════════════════ */
+@media(max-width:768px){
+  .nav { padding:0 20px; }
+  .nav-links { display:none; }
+  .hero { padding:100px 20px 60px; }
+  .section { padding:72px 20px; }
+  .hero-stats { display:none; }
+  .cta-section { padding:72px 20px; }
+  .footer { padding:48px 20px 24px; }
+}
+@media(max-width:480px){
+  .hero-cta-row { flex-direction:column; align-items:stretch; }
+  .btn-primary,.btn-secondary { justify-content:center; }
+  .big-stats { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">B2P</div>
+    <span class="nav-brand">B2P <span>Teachers</span></span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#programs">Programs</a>
+    <a class="nav-link" href="#features">Why B2P</a>
+    <a class="nav-link" href="#neet">NEET 2026</a>
+    <a class="nav-link" href="#testimonials">Stories</a>
+    <a class="nav-link" href="tel:+919159865005">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://app.b2pteachers.com" class="nav-btn-ghost">Login</a>
+    <a href="https://app.b2pteachers.com/register" class="nav-btn-fill">Enroll Now →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-mesh">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+    <div class="mesh-orb orb-3"></div>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-inner">
+    <div class="hero-chip">
+      <div class="chip-blink"></div>
+      Enrollments Open · Tamil Nadu · 2026
+    </div>
+
+    <h1 class="hero-h1">
+      <span class="h1-line">Where Students</span>
+      <span class="h1-line h1-gradient">Become Leaders.</span>
+      <span class="h1-line">Every Morning at 5.</span>
+    </h1>
+
+    <p class="hero-sub">
+      B2P Teachers delivers live online education that builds academic excellence and unshakeable character — from LKG to NEET, starting at ₹199/month.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="https://app.b2pteachers.com/register" class="btn-primary">
+        🎓 Start Enrollment →
+      </a>
+      <a href="#programs" class="btn-secondary">
+        Explore Programs ↓
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-lbl">Students Enrolled</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">5 AM</span>
+        <span class="stat-lbl">Daily Live Classes</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">48</span>
+        <span class="stat-lbl">Day Programs</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">LKG–12</span>
+        <span class="stat-lbl">All Standards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MARQUEE ═══════════════════ -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item"><div class="m-dot"></div>Live Online Classes</div>
+    <div class="marquee-item"><div class="m-dot"></div>Tamil Medium Available</div>
+    <div class="marquee-item"><div class="m-dot"></div>NEET UG 2026 · June 21</div>
+    <div class="marquee-item"><div class="m-dot"></div>Character Development</div>
+    <div class="marquee-item"><div class="m-dot"></div>5 AM Morning Discipline</div>
+    <div class="marquee-item"><div class="m-dot"></div>LKG to 12th Standard</div>
+    <div class="marquee-item"><div class="m-dot"></div>Certified Mentors</div>
+    <div class="marquee-item"><div class="m-dot"></div>Parent Progress Reports</div>
+    <div class="marquee-item"><div class="m-dot"></div>Doubt Clearing 24hrs</div>
+    <div class="marquee-item"><div class="m-dot"></div>Tamil Nadu's #1 EdTech</div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item"><div class="m-dot"></div>Live Online Classes</div>
+    <div class="marquee-item"><div class="m-dot"></div>Tamil Medium Available</div>
+    <div class="marquee-item"><div class="m-dot"></div>NEET UG 2026 · June 21</div>
+    <div class="marquee-item"><div class="m-dot"></div>Character Development</div>
+    <div class="marquee-item"><div class="m-dot"></div>5 AM Morning Discipline</div>
+    <div class="marquee-item"><div class="m-dot"></div>LKG to 12th Standard</div>
+    <div class="marquee-item"><div class="m-dot"></div>Certified Mentors</div>
+    <div class="marquee-item"><div class="m-dot"></div>Parent Progress Reports</div>
+    <div class="marquee-item"><div class="m-dot"></div>Doubt Clearing 24hrs</div>
+    <div class="marquee-item"><div class="m-dot"></div>Tamil Nadu's #1 EdTech</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PROGRAMS ═══════════════════ -->
+<section class="section programs-section" id="programs">
+  <div class="section-inner">
+    <p class="section-label reveal">Our Programs</p>
+    <h2 class="section-h reveal">Every Stage. <span class="hl">Every Student.</span></h2>
+    <p class="section-p reveal">From foundational character building in early childhood to NEET exam mastery — B2P has a program for every stage of your child's journey.</p>
+
+    <div class="programs-grid reveal">
+
+      <div class="program-card" onclick="location.href='#'">
+        <div class="pc-tag tag-blue">LKG — 9th Std · 11th</div>
+        <span class="pc-icon">🌱</span>
+        <p class="pc-name">Foundation Program</p>
+        <p class="pc-desc">Live classes covering academics, moral values, self-discipline, and life skills. The complete child — not just a student.</p>
+        <div class="pc-price">₹499<span style="font-size:14px;color:var(--gray)">/month</span></div>
+        <div class="pc-price-sub">Yearly: ₹3,990 — 2 months free</div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <div class="program-card featured" onclick="location.href='#'">
+        <div class="pc-tag tag-gold">12th Standard</div>
+        <span class="pc-icon">🏆</span>
+        <p class="pc-name">Board Prep Program</p>
+        <p class="pc-desc">Full board exam preparation with 1-on-1 mentoring, mock tests, exam strategy masterclass, and parent progress tracking.</p>
+        <div class="pc-price">₹699<span style="font-size:14px;color:var(--gray)">/month</span></div>
+        <div class="pc-price-sub">Yearly: ₹5,990 — 2 months free</div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <div class="program-card" onclick="location.href='#'">
+        <div class="pc-tag tag-green">All Standards</div>
+        <span class="pc-icon">🧭</span>
+        <p class="pc-name">Character Program</p>
+        <p class="pc-desc">Standalone moral and life skills track — confidence, goal setting, empathy, and values. Suitable as an add-on for any class.</p>
+        <div class="pc-price">₹199<span style="font-size:14px;color:var(--gray)">/month</span></div>
+        <div class="pc-price-sub">Yearly: ₹990 — 2 months free</div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <div class="program-card" onclick="location.href='#'" id="neet">
+        <div class="pc-tag tag-ember">NEET UG 2026</div>
+        <span class="pc-icon">⚕️</span>
+        <p class="pc-name">NEET Sprint · June 21</p>
+        <p class="pc-desc">35-day intensive sprint course built exclusively for NEET UG 2026 reexam on June 21. Physics, Chemistry, Biology + mock tests.</p>
+        <div class="pc-price">₹3,999<span style="font-size:14px;color:var(--gray)"> one-time</span></div>
+        <div class="pc-price-sub">35 days · Full syllabus · Tamil medium</div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+      <div class="program-card" onclick="location.href='#'" style="grid-column:span 2;">
+        <div class="pc-tag tag-blue">NEET UG 2026 — Complete</div>
+        <span class="pc-icon">🩺</span>
+        <p class="pc-name">NEET Complete Course</p>
+        <p class="pc-desc">The full NEET online course — 365+ hours, 20+ mock tests, all three subjects, 1-on-1 mentoring, Tamil medium, parent reports. For serious medical aspirants. Focused on June 21, 2026.</p>
+        <div class="pc-price">₹40,000<span style="font-size:14px;color:var(--gray)"> complete</span></div>
+        <div class="pc-price-sub">EMI available: 3 × ₹13,500 · Instant access on enrollment</div>
+        <div class="pc-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FEATURES ═══════════════════ -->
+<section class="section features-section" id="features">
+  <div class="section-inner">
+    <div class="features-layout">
+
+      <!-- VISUAL -->
+      <div class="features-visual reveal">
+        <div class="vis-ring ring-1"></div>
+        <div class="vis-ring ring-2"></div>
+        <div class="vis-ring ring-3"></div>
+        <div class="vis-center">🎓</div>
+        <div class="vis-float vf1"><div class="vf-dot" style="background:var(--green)"></div>500+ Active Students</div>
+        <div class="vis-float vf2"><div class="vf-dot" style="background:var(--gold)"></div>5 AM Daily Classes</div>
+        <div class="vis-float vf3"><div class="vf-dot" style="background:var(--aqua)"></div>Tamil Medium ✓</div>
+      </div>
+
+      <!-- TEXT -->
+      <div>
+        <p class="section-label reveal">Why B2P Teachers</p>
+        <h2 class="section-h reveal">Not Just Education.<br><span class="hl">Transformation.</span></h2>
+        <p class="section-p reveal">B2P combines academic excellence with character development — the two pillars that make a complete human being.</p>
+
+        <div class="features-list">
+          <div class="feat-item reveal reveal-delay-1">
+            <div class="feat-icon-wrap">⏰</div>
+            <div>
+              <p class="feat-title">5 AM Daily Live Classes</p>
+              <p class="feat-desc">Real-time learning with expert teachers every morning. Discipline is built before the first lesson even begins.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal reveal-delay-2">
+            <div class="feat-icon-wrap">🗣️</div>
+            <div>
+              <p class="feat-title">Tamil Medium — Zero Barrier</p>
+              <p class="feat-desc">All sessions in Tamil. Students learn deeper when they understand fully. No language barrier, ever.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal reveal-delay-3">
+            <div class="feat-icon-wrap">📊</div>
+            <div>
+              <p class="feat-title">Parent Progress Dashboard</p>
+              <p class="feat-desc">Real-time attendance, performance tracking, and weekly mentor notes — delivered to parents on WhatsApp.</p>
+            </div>
+          </div>
+          <div class="feat-item reveal reveal-delay-4">
+            <div class="feat-icon-wrap">🧠</div>
+            <div>
+              <p class="feat-title">Mental Strength Training</p>
+              <p class="feat-desc">B2P's signature character sessions eliminate exam anxiety and build unshakeable confidence under pressure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ BIG STATS ═══════════════════ -->
+<div class="stats-section section" style="padding:0;">
+  <div class="big-stats">
+    <div class="big-stat reveal">
+      <span class="bs-num">500+</span>
+      <p class="bs-lbl">Students Enrolled</p>
+      <p class="bs-sub">Across Tamil Nadu</p>
+    </div>
+    <div class="big-stat reveal reveal-delay-1">
+      <span class="bs-num">48</span>
+      <p class="bs-lbl">Day Programs</p>
+      <p class="bs-sub">Structured & proven</p>
+    </div>
+    <div class="big-stat reveal reveal-delay-2">
+      <span class="bs-num">5 AM</span>
+      <p class="bs-lbl">Every Morning</p>
+      <p class="bs-sub">Live, not recorded</p>
+    </div>
+    <div class="big-stat reveal reveal-delay-3">
+      <span class="bs-num">15+</span>
+      <p class="bs-lbl">Life Skills Modules</p>
+      <p class="bs-sub">Character & confidence</p>
+    </div>
+    <div class="big-stat reveal reveal-delay-4">
+      <span class="bs-num">24h</span>
+      <p class="bs-lbl">Doubt Clearing</p>
+      <p class="bs-sub">No question left behind</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TESTIMONIALS ═══════════════════ -->
+<section class="section testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <p class="section-label reveal">Parent Stories</p>
+    <h2 class="section-h reveal" style="margin-bottom:48px;">Real Families. <span class="hl">Real Change.</span></h2>
+  </div>
+  <div class="testi-track-wrap">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"My daughter used to sleep till 8 AM. After 3 weeks of B2P, she wakes up at 5 AM on her own and finishes revision before school. I cried watching her."</p><div class="tc-author"><div class="tc-ava">SK</div><div><p class="tc-name">Saraswathi K.</p><p class="tc-role">Mother · Class 12 · Chennai</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"My son was addicted to his phone. After B2P's digital fasting session, he put it down himself. His board exam marks improved by 18 points."</p><div class="tc-author"><div class="tc-ava">RM</div><div><p class="tc-name">Rajan M.</p><p class="tc-role">Father · Class 10 · Coimbatore</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"The moral class sessions changed how my child treats everyone at home. More respectful, more grateful. Best ₹499 I ever spent."</p><div class="tc-author"><div class="tc-ava">PM</div><div><p class="tc-name">Priya M.</p><p class="tc-role">Mother · Class 9 · Madurai</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"Tamil medium Biology classes are a game changer for NEET. My daughter finally understands Genetics without the language barrier. Worth every rupee."</p><div class="tc-author"><div class="tc-ava">VP</div><div><p class="tc-name">Vijayalakshmi P.</p><p class="tc-role">Mother · NEET · Salem</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"We enrolled both children under the sibling plan. My son's NEET mock score went up 45 marks in 2 weeks. The mock tests are harder than the real exam."</p><div class="tc-author"><div class="tc-ava">KR</div><div><p class="tc-name">Kavitha R.</p><p class="tc-role">Parent · NEET + 10th · Tirunelveli</p></div></div></div>
+      <!-- duplicate -->
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"My daughter used to sleep till 8 AM. After 3 weeks of B2P, she wakes up at 5 AM on her own and finishes revision before school. I cried watching her."</p><div class="tc-author"><div class="tc-ava">SK</div><div><p class="tc-name">Saraswathi K.</p><p class="tc-role">Mother · Class 12 · Chennai</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"My son was addicted to his phone. After B2P's digital fasting session, he put it down himself. His board exam marks improved by 18 points."</p><div class="tc-author"><div class="tc-ava">RM</div><div><p class="tc-name">Rajan M.</p><p class="tc-role">Father · Class 10 · Coimbatore</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"The moral class sessions changed how my child treats everyone at home. More respectful, more grateful. Best ₹499 I ever spent."</p><div class="tc-author"><div class="tc-ava">PM</div><div><p class="tc-name">Priya M.</p><p class="tc-role">Mother · Class 9 · Madurai</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"Tamil medium Biology classes are a game changer for NEET. My daughter finally understands Genetics without the language barrier. Worth every rupee."</p><div class="tc-author"><div class="tc-ava">VP</div><div><p class="tc-name">Vijayalakshmi P.</p><p class="tc-role">Mother · NEET · Salem</p></div></div></div>
+      <div class="testi-card"><div class="tc-glow"></div><div class="tc-stars">★★★★★</div><p class="tc-text">"We enrolled both children under the sibling plan. My son's NEET mock score went up 45 marks in 2 weeks. The mock tests are harder than the real exam."</p><div class="tc-author"><div class="tc-ava">KR</div><div><p class="tc-name">Kavitha R.</p><p class="tc-role">Parent · NEET + 10th · Tirunelveli</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <p class="cta-eyebrow reveal">Start Today</p>
+    <h2 class="cta-h reveal">Your Child's<br><span class="h1-gradient">Best Chapter</span><br>Starts at 5 AM.</h2>
+    <p class="cta-p reveal">Join 500+ families across Tamil Nadu who chose B2P Teachers. Enrollment open now — seats are limited.</p>
+    <div class="cta-btns reveal">
+      <a href="https://app.b2pteachers.com/register" class="btn-primary">
+        🎓 Enroll Now →
+      </a>
+      <a href="https://wa.me/919159865005?text=Hi B2P Teachers! I want to know more about your programs." class="btn-secondary" target="_blank">
+        💬 WhatsApp Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="nav-logo-mark">B2P</div>
+        <span class="nav-brand">B2P <span>Teachers</span></span>
+      </div>
+      <p class="footer-desc">Shaping tomorrow's leaders through live education, character development, and disciplined morning routines — across Tamil Nadu.</p>
+      <div class="footer-socials">
+        <div class="social-btn">📘</div>
+        <div class="social-btn">📸</div>
+        <div class="social-btn">▶️</div>
+        <div class="social-btn">💼</div>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Programs</p>
+      <ul class="footer-links">
+        <li><a href="#">Foundation (LKG–9th)</a></li>
+        <li><a href="#">Board Prep (12th)</a></li>
+        <li><a href="#">Character Program</a></li>
+        <li><a href="#">NEET Sprint 2026</a></li>
+        <li><a href="#">NEET Complete Course</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <ul class="footer-links">
+        <li><a href="#">About B2P</a></li>
+        <li><a href="#">Our Mentors</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <ul class="footer-links">
+        <li><a href="tel:+919159865005">91598 65005</a></li>
+        <li><a href="tel:+918807667199">88076 67199</a></li>
+        <li><a href="#">WhatsApp Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 B2P Teachers. All rights reserved. Tamil Nadu, India.</p>
+    <p class="footer-phone">📞 91598 65005 · 88076 67199</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/919159865005" class="wa-float" target="_blank">💬</a>
+
+<script>
+/* ── CUSTOM CURSOR ── */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.program-card,.feat-item,.nav-link').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ring.classList.add('hovered'));
+  el.addEventListener('mouseleave',()=>ring.classList.remove('hovered'));
+});
+
+/* ── PARTICLES ── */
+(function(){
+  const container=document.getElementById('particles');
+  for(let i=0;i<25;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*3+1;
+    p.style.cssText=`
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      bottom:${Math.random()*20}%;
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ── SCROLL REVEAL ── */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* ── ACTIVE NAV LINK ── */
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('.nav');
+  if(window.scrollY>60){
+    nav.style.background='rgba(4,8,15,0.95)';
+  } else {
+    nav.style.background='rgba(4,8,15,0.7)';
+  }
+});
+</script>
+</body>
+</html>
