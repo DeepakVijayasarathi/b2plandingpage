@@ -193,6 +193,11 @@ img { display:block; max-width:100%; }
   max-width:900px; margin:0 auto; text-align:center;
 }
 
+@media(max-width:768px){
+  .nav-brand {
+    display:none;
+  }
+}
 /* EYEBROW CHIP */
 .hero-chip {
   display:inline-flex; align-items:center; gap:8px;
@@ -928,7 +933,7 @@ img { display:block; max-width:100%; }
   </div>
   <div class="nav-actions">
     <a href="https://app.b2pteachers.com" class="nav-btn-ghost">Login</a>
-    <a href="https://app.b2pteachers.com/register" class="nav-btn-fill">Enroll Now →</a>
+    <a href="https://app.b2pteachers.com/student-register" class="nav-btn-fill">Enroll Now →</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -945,7 +950,7 @@ img { display:block; max-width:100%; }
   <div class="mobile-menu-divider"></div>
   <div class="mobile-menu-btns">
     <a href="https://app.b2pteachers.com" class="nav-btn-ghost">Login</a>
-    <a href="https://app.b2pteachers.com/register" class="nav-btn-fill">Enroll Now →</a>
+    <a href="https://app.b2pteachers.com/student-register" class="nav-btn-fill">Enroll Now →</a>
   </div>
 </div>
 
@@ -970,11 +975,11 @@ img { display:block; max-width:100%; }
     </h1>
 
     <p class="hero-sub">
-      B2P Teachers delivers live online education that builds academic excellence and unshakeable character — from LKG to NEET, starting at ₹199/month.
+      B2P Teachers delivers live online education that builds academic excellence and unshakeable character — from LKG to NEET, starting at ₹5990/month.
     </p>
 
     <div class="hero-cta-row">
-      <a href="https://app.b2pteachers.com/register" class="btn-primary">
+      <a href="https://app.b2pteachers.com/student-register" class="btn-primary">
         🎓 Start Enrollment →
       </a>
       <a href="#programs" class="btn-secondary">
@@ -1030,68 +1035,405 @@ img { display:block; max-width:100%; }
   </div>
 </div>
 
-<!-- ═══════════════════ PROGRAMS ═══════════════════ -->
-<section class="section programs-section" id="programs">
+<!-- ═══════════════════ PROGRAMS (OLD — COMMENTED OUT) ═══════════════════
+<section class="section programs-section" id="programs-old">
   <div class="section-inner">
     <p class="section-label reveal">Our Programs</p>
     <h2 class="section-h reveal">Every Stage. <span class="hl">Every Student.</span></h2>
     <p class="section-p reveal">From foundational character building in early childhood to NEET exam mastery — B2P has a program for every stage of your child's journey.</p>
-
     <div class="programs-grid reveal">
-
       <div class="program-card" onclick="location.href='#'">
-        <div class="pc-tag tag-blue">LKG — 9th Std · 11th</div>
+        <div class="pc-tag tag-blue">LKG — 9th Std</div>
         <span class="pc-icon">🌱</span>
         <p class="pc-name">Foundation Program</p>
-        <p class="pc-desc">Live classes covering academics, moral values, self-discipline, and life skills. The complete child — not just a student.</p>
-        <div class="pc-price">₹499<span style="font-size:14px;color:var(--gray)">/month</span></div>
-        <div class="pc-price-sub">Yearly: ₹3,990 — 2 months free</div>
+        <p class="pc-desc">Live classes covering academics, moral values, self-discipline, and life skills.</p>
+        <div class="pc-price">₹7,999<span>/Yearly</span></div>
         <div class="pc-arrow">→</div>
       </div>
-
-      <div class="program-card featured" onclick="location.href='#'">
-        <div class="pc-tag tag-gold">12th Standard</div>
-        <span class="pc-icon">🏆</span>
-        <p class="pc-name">Board Prep Program</p>
-        <p class="pc-desc">Full board exam preparation with 1-on-1 mentoring, mock tests, exam strategy masterclass, and parent progress tracking.</p>
-        <div class="pc-price">₹699<span style="font-size:14px;color:var(--gray)">/month</span></div>
-        <div class="pc-price-sub">Yearly: ₹5,990 — 2 months free</div>
-        <div class="pc-arrow">→</div>
-      </div>
-
-      <div class="program-card" onclick="location.href='#'">
-        <div class="pc-tag tag-green">All Standards</div>
-        <span class="pc-icon">🧭</span>
-        <p class="pc-name">Character Program</p>
-        <p class="pc-desc">Standalone moral and life skills track — confidence, goal setting, empathy, and values. Suitable as an add-on for any class.</p>
-        <div class="pc-price">₹199<span style="font-size:14px;color:var(--gray)">/month</span></div>
-        <div class="pc-price-sub">Yearly: ₹990 — 2 months free</div>
-        <div class="pc-arrow">→</div>
-      </div>
-
-      <div class="program-card" onclick="location.href='#'" id="neet">
-        <div class="pc-tag tag-ember">NEET UG 2026</div>
-        <span class="pc-icon">⚕️</span>
-        <p class="pc-name">NEET Sprint · June 21</p>
-        <p class="pc-desc">35-day intensive sprint course built exclusively for NEET UG 2026 reexam on June 21. Physics, Chemistry, Biology + mock tests.</p>
-        <div class="pc-price">₹3,999<span style="font-size:14px;color:var(--gray)"> one-time</span></div>
-        <div class="pc-price-sub">35 days · Full syllabus · Tamil medium</div>
-        <div class="pc-arrow">→</div>
-      </div>
-
-      <div class="program-card program-card-wide" onclick="location.href='#'" style="grid-column:span 2;">
-        <div class="pc-tag tag-blue">NEET UG 2026 — Complete</div>
-        <span class="pc-icon">🩺</span>
-        <p class="pc-name">NEET Complete Course</p>
-        <p class="pc-desc">The full NEET online course — 365+ hours, 20+ mock tests, all three subjects, 1-on-1 mentoring, Tamil medium, parent reports. For serious medical aspirants. Focused on June 21, 2026.</p>
-        <div class="pc-price">₹40,000<span style="font-size:14px;color:var(--gray)"> complete</span></div>
-        <div class="pc-price-sub">EMI available: 3 × ₹13,500 · Instant access on enrollment</div>
-        <div class="pc-arrow">→</div>
-      </div>
-
+      ... (old cards omitted)
     </div>
   </div>
 </section>
+END OLD PROGRAMS ══════════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════ PRICING ═══════════════════ -->
+<section class="section pricing-section" id="programs">
+<style>
+.pricing-section { background:var(--cream); }
+.pricing-tabs {
+  display:flex; flex-wrap:wrap; gap:8px;
+  justify-content:center; margin-bottom:40px;
+}
+.ptab {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:13px; font-weight:600;
+  padding:9px 20px; border-radius:40px;
+  border:1.5px solid var(--line);
+  background:transparent; color:var(--navy);
+  cursor:pointer; transition:all .2s;
+}
+.ptab.active, .ptab:hover {
+  background:var(--orange); border-color:var(--orange);
+  color:#fff;
+}
+.ptab-panel { display:none; }
+.ptab-panel.active { display:block; }
+
+/* curriculum sub-tabs */
+.curr-tabs {
+  display:flex; gap:8px; justify-content:center; margin-bottom:28px; flex-wrap:wrap;
+}
+.ctab {
+  font-family:'DM Mono',monospace;
+  font-size:11px; font-weight:500;
+  padding:6px 16px; border-radius:6px;
+  border:1px solid var(--line);
+  background:transparent; color:var(--gray);
+  cursor:pointer; transition:all .2s;
+  text-transform:uppercase; letter-spacing:0.8px;
+}
+.ctab.active, .ctab:hover {
+  background:var(--navy); color:#fff; border-color:var(--navy);
+}
+.cpanel { display:none; }
+.cpanel.active { display:block; }
+
+/* pricing table */
+.price-table {
+  width:100%; border-collapse:collapse; margin:0 auto;
+  max-width:680px;
+}
+.price-table th {
+  font-family:'DM Mono',monospace; font-size:11px;
+  text-transform:uppercase; letter-spacing:1px;
+  color:var(--gray); font-weight:500;
+  padding:12px 20px; border-bottom:2px solid var(--line);
+  text-align:left;
+}
+.price-table th:last-child { text-align:right; }
+.price-table td {
+  padding:16px 20px;
+  font-size:15px; color:var(--navy);
+  border-bottom:1px solid var(--line);
+}
+.price-table td:last-child {
+  text-align:right;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:18px; color:var(--orange);
+}
+.price-table tr:last-child td { border-bottom:none; }
+.price-table tr:hover td { background:rgba(240,122,26,0.04); }
+.price-badge {
+  display:inline-block;
+  font-family:'DM Mono',monospace; font-size:10px;
+  padding:2px 8px; border-radius:4px;
+  background:rgba(245,166,35,0.15); color:#A06800;
+  text-transform:uppercase; letter-spacing:0.8px;
+  margin-left:8px; vertical-align:middle;
+}
+.price-table-wrap {
+  background:#fff; border-radius:var(--r);
+  border:1px solid var(--line);
+  overflow:hidden;
+  max-width:680px; margin:0 auto;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+}
+
+/* 1-on-1 cards */
+.oto-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+  max-width:680px; margin:0 auto;
+}
+@media(max-width:600px){ .oto-grid{grid-template-columns:1fr;} }
+.oto-card {
+  background:#fff; border-radius:var(--r);
+  border:1px solid var(--line);
+  padding:28px 28px 24px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+}
+.oto-class {
+  font-family:'DM Mono',monospace; font-size:10px;
+  text-transform:uppercase; letter-spacing:1px;
+  color:var(--orange); margin-bottom:6px;
+}
+.oto-title { font-weight:700; font-size:17px; color:var(--navy); margin-bottom:4px; }
+.oto-meta { font-size:13px; color:var(--gray); margin-bottom:20px; }
+.oto-price {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:28px; color:var(--orange);
+}
+.oto-price span { font-size:14px; font-weight:400; color:var(--gray); }
+
+/* combo section note */
+.combo-note {
+  max-width:680px; margin:0 auto 24px;
+  background:rgba(240,122,26,0.07); border-radius:10px;
+  padding:14px 20px;
+  font-size:13px; color:var(--navy); line-height:1.6;
+  border-left:3px solid var(--orange);
+}
+.only-jee-card {
+  max-width:680px; margin:24px auto 0;
+  background:#fff; border-radius:var(--r);
+  border:1px solid var(--line);
+  padding:24px 28px;
+  display:flex; align-items:center; justify-content:space-between;
+  box-shadow:0 4px 24px rgba(0,0,0,0.06);
+  flex-wrap:wrap; gap:12px;
+}
+.ojc-label { font-weight:600; font-size:16px; color:var(--navy); }
+.ojc-meta { font-size:13px; color:var(--gray); margin-top:3px; }
+.ojc-price {
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800; font-size:26px; color:var(--orange);
+}
+@media(max-width:768px){
+  .pricing-tabs { gap:6px; }
+  .ptab { font-size:12px; padding:7px 14px; }
+  .price-table th, .price-table td { padding:12px 14px; }
+}
+</style>
+
+  <div class="section-inner">
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-h reveal">Transparent <span class="hl">Fee Structure.</span></h2>
+    <p class="section-p reveal">Choose your class, curriculum, and duration. No hidden fees.</p>
+
+    <!-- MAIN TABS -->
+    <div class="pricing-tabs reveal">
+      <button class="ptab active" onclick="showPTab(this,'pt-10th')">10th Standard</button>
+      <button class="ptab" onclick="showPTab(this,'pt-12th')">12th Standard</button>
+      <button class="ptab" onclick="showPTab(this,'pt-oto')">1-on-1 Tutoring</button>
+      <button class="ptab" onclick="showPTab(this,'pt-neet')">NEET</button>
+      <button class="ptab" onclick="showPTab(this,'pt-jee')">IIT JEE</button>
+      <button class="ptab" onclick="showPTab(this,'pt-combo')">12th + NEET / JEE</button>
+    </div>
+
+    <!-- 10th Standard -->
+    <div class="ptab-panel active reveal" id="pt-10th">
+      <div class="curr-tabs">
+        <button class="ctab active" onclick="showCTab(this,'c10-tm')">Tamil Medium</button>
+        <button class="ctab" onclick="showCTab(this,'c10-mat')">Matriculation</button>
+        <button class="ctab" onclick="showCTab(this,'c10-cbse')">CBSE</button>
+      </div>
+      <div class="cpanel active" id="c10-tm">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>Tamil Medium</td><td>₹6,000</td></tr>
+              <tr><td>5 Months</td><td>Tamil Medium</td><td>₹8,500</td></tr>
+              <tr><td>Yearly</td><td>Tamil Medium</td><td>₹15,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="c10-mat">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>Matriculation</td><td>₹7,500</td></tr>
+              <tr><td>5 Months</td><td>Matriculation</td><td>₹11,000</td></tr>
+              <tr><td>Yearly</td><td>Matriculation</td><td>₹19,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="c10-cbse">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>CBSE</td><td>₹9,000</td></tr>
+              <tr><td>5 Months</td><td>CBSE</td><td>₹13,000</td></tr>
+              <tr><td>Yearly</td><td>CBSE</td><td>₹25,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12th Standard -->
+    <div class="ptab-panel" id="pt-12th">
+      <div class="curr-tabs">
+        <button class="ctab active" onclick="showCTab(this,'c12-tm')">Tamil Medium</button>
+        <button class="ctab" onclick="showCTab(this,'c12-mat')">Matriculation</button>
+        <button class="ctab" onclick="showCTab(this,'c12-cbse')">CBSE</button>
+      </div>
+      <div class="cpanel active" id="c12-tm">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>Tamil Medium</td><td>₹9,000</td></tr>
+              <tr><td>5 Months</td><td>Tamil Medium</td><td>₹13,000</td></tr>
+              <tr><td>Yearly</td><td>Tamil Medium</td><td>₹23,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="c12-mat">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>Matriculation</td><td>₹12,000</td></tr>
+              <tr><td>5 Months</td><td>Matriculation</td><td>₹17,000</td></tr>
+              <tr><td>Yearly</td><td>Matriculation</td><td>₹30,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="c12-cbse">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Curriculum</th><th>Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>CBSE</td><td>₹15,000</td></tr>
+              <tr><td>5 Months</td><td>CBSE</td><td>₹22,000</td></tr>
+              <tr><td>Yearly</td><td>CBSE</td><td>₹38,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1-on-1 Tutoring -->
+    <div class="ptab-panel" id="pt-oto">
+      <div class="oto-grid">
+        <div class="oto-card">
+          <div class="oto-class">10th Standard · 1 Subject</div>
+          <div class="oto-title">Single Subject Focus</div>
+          <div class="oto-meta">Weekly 3 days &nbsp;·&nbsp; Monthly 12 days</div>
+          <div class="oto-price">₹5,000 <span>/month</span></div>
+        </div>
+        <div class="oto-card">
+          <div class="oto-class">10th Standard · 2 Subjects</div>
+          <div class="oto-title">Dual Subject Mastery</div>
+          <div class="oto-meta">Weekly 5 days &nbsp;·&nbsp; Monthly 20 days</div>
+          <div class="oto-price">₹8,000 <span>/month</span></div>
+        </div>
+        <div class="oto-card">
+          <div class="oto-class">12th Standard · 1 Subject</div>
+          <div class="oto-title">Single Subject Focus</div>
+          <div class="oto-meta">Weekly 3 days &nbsp;·&nbsp; Monthly 12 days</div>
+          <div class="oto-price">₹6,000 <span>/month</span></div>
+        </div>
+        <div class="oto-card">
+          <div class="oto-class">12th Standard · 2 Subjects</div>
+          <div class="oto-title">Dual Subject Mastery</div>
+          <div class="oto-meta">Weekly 5 days &nbsp;·&nbsp; Monthly 20 days</div>
+          <div class="oto-price">₹10,000 <span>/month</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEET -->
+    <div class="ptab-panel" id="pt-neet">
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <thead><tr><th>Duration</th><th>Course</th><th>Fee</th></tr></thead>
+          <tbody>
+            <tr><td>3 Months</td><td>NEET UG</td><td>₹27,000</td></tr>
+            <tr><td>5 Months</td><td>NEET UG</td><td>₹40,000</td></tr>
+            <tr><td>Yearly</td><td>NEET UG</td><td>₹72,000 <span class="price-badge">Best Value</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- IIT JEE -->
+    <div class="ptab-panel" id="pt-jee">
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <thead><tr><th>Duration</th><th>Course</th><th>Fee</th></tr></thead>
+          <tbody>
+            <tr><td>3 Months</td><td>IIT JEE</td><td>₹27,000</td></tr>
+            <tr><td>5 Months</td><td>IIT JEE</td><td>₹40,000</td></tr>
+            <tr><td>Yearly</td><td>IIT JEE</td><td>₹72,000 <span class="price-badge">Best Value</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 12th + NEET/JEE Combo -->
+    <div class="ptab-panel" id="pt-combo">
+      <div class="combo-note">
+        12th board classes + NEET / JEE on <strong>Saturdays & Sundays</strong> (Weekly 2 days).
+        Fees shown are combined totals.
+      </div>
+      <div class="curr-tabs">
+        <button class="ctab active" onclick="showCTab(this,'cc-tm')">Tamil Medium</button>
+        <button class="ctab" onclick="showCTab(this,'cc-mat')">Matriculation</button>
+        <button class="ctab" onclick="showCTab(this,'cc-cbse')">CBSE</button>
+      </div>
+      <div class="cpanel active" id="cc-tm">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Breakdown</th><th>Total Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>₹9,000 + ₹18,000</td><td>₹27,000</td></tr>
+              <tr><td>5 Months</td><td>₹13,000 + ₹18,000</td><td>₹31,000</td></tr>
+              <tr><td>Yearly</td><td>₹23,000 + ₹18,000</td><td>₹41,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="cc-mat">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Breakdown</th><th>Total Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>₹12,000 + ₹18,000</td><td>₹30,000</td></tr>
+              <tr><td>5 Months</td><td>₹17,000 + ₹18,000</td><td>₹35,000</td></tr>
+              <tr><td>Yearly</td><td>₹30,000 + ₹18,000</td><td>₹48,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="cpanel" id="cc-cbse">
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead><tr><th>Duration</th><th>Breakdown</th><th>Total Fee</th></tr></thead>
+            <tbody>
+              <tr><td>3 Months</td><td>₹15,000 + ₹18,000</td><td>₹33,000</td></tr>
+              <tr><td>5 Months</td><td>₹22,000 + ₹18,000</td><td>₹40,000</td></tr>
+              <tr><td>Yearly</td><td>₹38,000 + ₹18,000</td><td>₹56,000 <span class="price-badge">Best Value</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Only NEET/JEE standalone -->
+      <div class="only-jee-card">
+        <div>
+          <div class="ojc-label">Only NEET / JEE</div>
+          <div class="ojc-meta">Yearly &nbsp;·&nbsp; Weekly 2 classes</div>
+        </div>
+        <div class="ojc-price">₹25,000</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function showPTab(btn, panelId) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ptab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+function showCTab(btn, panelId) {
+  const parent = btn.closest('.ptab-panel') || btn.closest('.pricing-section');
+  const siblingCtabs = btn.closest('.curr-tabs').querySelectorAll('.ctab');
+  const siblingCpanels = btn.closest('.ptab-panel') ? btn.closest('.ptab-panel').querySelectorAll('.cpanel') : document.querySelectorAll('.cpanel');
+  siblingCtabs.forEach(t => t.classList.remove('active'));
+  btn.closest('.ptab-panel').querySelectorAll('.cpanel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+</script>
 
 <!-- ═══════════════════ FEATURES ═══════════════════ -->
 <section class="section features-section" id="features">
@@ -1327,11 +1669,12 @@ img { display:block; max-width:100%; }
     <p class="cta-eyebrow reveal">Start Today</p>
     <h2 class="cta-h reveal">Your Child's<br><span class="h1-gradient">Best Chapter</span><br>Starts at 5 AM.</h2>
     <p class="cta-p reveal">Join 500+ families across Tamil Nadu who chose B2P Teachers. Enrollment open now — seats are limited.</p>
+    <p class="cta-p reveal" style="color:rgba(255,255,255,0.75);font-size:15px;margin-bottom:28px;">Need help? Call or message <strong>+91 70949 75153</strong> and our team will guide you through enrollment.</p>
     <div class="cta-btns reveal">
-      <a href="https://app.b2pteachers.com/register" class="btn-primary">
+      <a href="https://app.b2pteachers.com/student-register" class="btn-primary">
         🎓 Enroll Now →
       </a>
-      <a href="https://wa.me/919159865005?text=Hi B2P Teachers! I want to know more about your programs." class="btn-secondary" target="_blank">
+      <a href="https://wa.me/917094975153?text=Hi B2P Teachers! I want to know more about your programs." class="btn-secondary" target="_blank">
         💬 WhatsApp Us
       </a>
     </div>
@@ -1376,8 +1719,8 @@ img { display:block; max-width:100%; }
     <div>
       <p class="footer-col-title">Contact</p>
       <ul class="footer-links">
-        <li><a href="tel:+917094975153">70949 75153</a></li>
-        <li><a href="#">WhatsApp Us</a></li>
+        <li><a href="tel:+917094975153">Contact Us</a></li>
+        <li><a href="https://wa.me/917094975153?text=Hi B2P Teachers! I want to know more about your programs." target="_blank">WhatsApp Us</a></li>
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Terms of Use</a></li>
       </ul>
@@ -1385,13 +1728,13 @@ img { display:block; max-width:100%; }
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 B2P Teachers. All rights reserved. Tamil Nadu, India.</p>
-    <p class="footer-phone">📞 70949 75153</p>
+    <p class="footer-phone" style="margin-top:8px;color:rgba(255,255,255,0.65);font-size:13px;">Need help? Call or message +91 70949 75153 — we’re here to support your child’s learning.</p>
   </div>
 </footer>
 
-<a href="https://wa.me/919159865005" class="wa-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/917094975153" class="wa-float" target="_blank" aria-label="WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.5990-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
